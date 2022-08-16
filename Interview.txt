@@ -128,7 +128,76 @@ eg:- mongod --dbpath D:\Mongo\data\db
 :- MongoDB comes with two different types of documents :-
 1. Relational document
 2. Embedded document
-
 :- Relational documents work the same way -where you will have different documents for parent,child and a reference of parent will be stored in the child document.
-
 :- Embedded documents is one where you have parent and child values in the same document.
+
+
+------Update Documents--------
+
+db.collectionname.update(filter,update,options)
+filter:- the condn. for which we want to update the document.
+update:- the fields that we want to update.
+options:- optional parameter which can contain some configuration.
+here, the update function always updates the first document that is matched and exit.
+To update multiple document that match the criteria,we have to pass the third parameter as an object in the function.
+eg:- db.collectionname.update({name:'mary jane},{$set:{email:'newgmail.com'}},{multi:true})
+
+
+----------Query Documents----------------
+db.collectionname.find(condition,fields)
+
+Ques:- How to exclude "_id" fields from the document?
+:- we have to specify the field name with true or false value in the second parameter.
+eg:- db.collectionname.find(query,{_id:false or 0})
+
+
+-----------Query documents with comparison operatores--------
+
+list of camparison operator:-
+1. $gt:-matches value that are greater than a specified value
+2. $gte:- matches value that are greater than or equal to  a specified value
+3. $lt:- matches value that are less than a specified value
+4. $lte:- matches value that are less than or equal to  a specified value
+
+
+-----------Query document using IN & NOT IN----------------
+here,we query a document with an array of values.
+
+
+----------Limiting Records------------
+:- Limiting reords will be helpful only when used with a proper application and some programming languages,bcoz mongosh shell displays only the first 20 records.
+eg:- db.movies.find({},{title:1}).limit(5)
+:- Limit command is used to limit the number of documents to fetch in the list.
+
+skip():- it will the skip the documents.
+eg:- db.movies.find().skip(2)   //this will skip the first 2 documents.
+
+
+------------Sorting Records------------
+:- we will use sort() method to sort the documents.
+eg:- db.movies.find().sort(1 or -1) //1 for ascending and -1 for descending.
+:- By default the sort method will sort the documents in ascending order.
+:- if no parameters or field are provided in the sort() method,then bydefault sorting will be done on KEY field. i.e., _objectId
+
+
+---------Aggregate Command-countDocuments()-----------------
+:- The countDocuments() function will return the number of the documents in the collection based on some condition if provided.
+
+-------Aggregate Command-distinct()----------------
+:- The distinct() function is used to retrieve the unique values from the collection and will return the value in the array.
+
+
+--------Aggregate Command-aggregate()-------------
+:- aggregate() function is used to process the documents and return the result as combined output.
+:-Basically,we are talking about commands like:- max,min,average,sum etc.
+
+
+--------Date Query-----------
+:- MongoDB returns the date either as string or date object.
+:- Date() function returns the current date as a string format in current time zone.
+:- new Date() function returns the current date as a date object in UTC time zone.
+
+--------MongoDB Indexes---------
+:- By default, MongoDB implements indexing on the "_id" field.
+:- Indexing helps to improve the speed of search operations as the search will be carried upon indexes that carry few fields instead of traditionally searching the whole document.
+syntax:-db.collectionname.createIndex({fieldname:1 or -1}) //1 means ascending ,-1 means descending
