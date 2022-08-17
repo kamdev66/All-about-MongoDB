@@ -120,4 +120,12 @@ deleteMany():-
 
 
 ----------------------------------------------------
+what are the ways to connect mongodb to nodejs?
+:- 1. Using mongodb npm :- npm i mongodb
+2. Using mongoose javascript framework
+
+
+What is Schema?
+:- A mongoose schema defines the structure of the document,default values,validators, etc.
+
 
