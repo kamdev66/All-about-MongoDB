@@ -128,4 +128,33 @@ what are the ways to connect mongodb to nodejs?
 What is Schema?
 :- A mongoose schema defines the structure of the document,default values,validators, etc.
 
+What is Model?
+:- A mongoose Model is a wrapper on the Mongoose Schema.
+:- A model provides an interface to the database for creating,querying,updating,deleting records etc.
+
+//How to Read or Query the documents using mongoose
+const readDocuments=async()=>{
+    try {
+        const result=await Student.find();
+        console.log(result);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+readDocuments()
+
+
+------------Comaparison Query operator--------------------------
+Link:- https://www.mongodb.com/docs/manual/reference/operator/query-comparison/
+
+------------Logical Query Operator---------
+Link:- https://www.mongodb.com/docs/manual/reference/operator/query-logical/
+
+--------------------------------
+
+Link:-MongoDB:- https://database.guide/category/dbms/nosql/mongodb/
+      SQL:- https://database.guide/category/sql/
+      MySQL:- https://database.guide/category/dbms/rdbms/mysql/
+
+
 
